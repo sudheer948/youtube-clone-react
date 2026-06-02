@@ -34,7 +34,7 @@ git clone <repository-url>
 2. Navigate to the project directory
 
 ```bash
-cd namaste-youtube
+cd youtube-clone-react
 ```
 
 3. Install dependencies
