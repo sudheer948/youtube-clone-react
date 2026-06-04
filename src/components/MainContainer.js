@@ -5,7 +5,6 @@ import { openMenu } from "../utils/appSlice";
 import { useDispatch } from "react-redux";
 
 const MainContainer = () => {
-  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(openMenu());

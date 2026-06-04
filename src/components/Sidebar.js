@@ -11,7 +11,7 @@ const Sidebar = () => {
   return (
     <>
       {isMenuOpen && (
-        <div className="p-5 shadow-lg h-[28rem]">
+        <div className="p-4 text-center shadow-lg h-[48rem] w-[65rem]">
           <h1 className="font-bold">Subscriptions</h1>
           <ul>
             <li>
@@ -20,6 +20,20 @@ const Sidebar = () => {
             <li>Shorts</li>
             <li>Videos</li>
             <li>Live</li>
+          </ul>
+          <h1 className="font-bold pt-5">Watch Later</h1>
+          <ul>
+            <li>Music</li>
+            <li>Sports</li>
+            <li>Gaming</li>
+            <li>Movies</li>
+          </ul>
+          <h1 className="font-bold pt-5">Watch Later</h1>
+          <ul>
+            <li>Music</li>
+            <li>Sports</li>
+            <li>Gaming</li>
+            <li>Movies</li>
           </ul>
           <h1 className="font-bold pt-5">Watch Later</h1>
           <ul>
