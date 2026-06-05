@@ -7,6 +7,9 @@ const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const [nextPageToken, setNextPageToken] = useState(null);
 
+  // Prevent Multiple API Calls
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     getVideos();
   }, []);
@@ -22,6 +25,10 @@ const VideoContainer = () => {
   // Infinite scrolling
 
   const loadMoreVideos = async () => {
+    if (loading) return;
+
+    setLoading(true);
+
     const data = await fetch(
       YOUTUBE_VIDEOS_API + "&pageToken=" + nextPageToken,
     );
@@ -31,6 +38,8 @@ const VideoContainer = () => {
 
     setVideos((prev) => [...prev, ...json.items]);
     setNextPageToken(json.nextPageToken);
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -51,13 +60,22 @@ const VideoContainer = () => {
   };
 
   return (
-    <div className="flex flex-wrap">
-      {videos.map((video) => (
-        <Link key={video.id} to={"/watch?v=" + video.id}>
-          <VideoCard info={video} />
-        </Link>
-      ))}
-    </div>
+    <>
+      <div className="flex flex-wrap">
+        {videos.map((video) => (
+          <Link key={video.id} to={"/watch?v=" + video.id}>
+            <VideoCard info={video} />
+          </Link>
+        ))}
+      </div>
+      <div>
+        {loading && (
+          <h1 className="text-center font-bold text-2xl">
+            Loading more videos...
+          </h1>
+        )}
+      </div>
+    </>
   );
 };
 
