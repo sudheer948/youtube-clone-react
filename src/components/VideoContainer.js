@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
+  const [nextPageToken, setNextPageToken] = useState(null);
 
   useEffect(() => {
     getVideos();
@@ -14,6 +15,39 @@ const VideoContainer = () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const json = await data.json();
     setVideos(json.items);
+    console.log(json.nextPageToken);
+    setNextPageToken(json.nextPageToken);
+  };
+
+  // Infinite scrolling
+
+  const loadMoreVideos = async () => {
+    const data = await fetch(
+      YOUTUBE_VIDEOS_API + "&pageToken=" + nextPageToken,
+    );
+
+    const json = await data.json();
+    //console.log(json);
+
+    setVideos((prev) => [...prev, ...json.items]);
+    setNextPageToken(json.nextPageToken);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop >=
+      document.documentElement.scrollHeight - 100
+    ) {
+      loadMoreVideos();
+    }
   };
 
   return (
