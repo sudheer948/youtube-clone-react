@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ const VideoContainer = () => {
   const [nextPageToken, setNextPageToken] = useState(null);
 
   // Prevent Multiple API Calls
-  const [loading, setLoading] = useState(false);
+  const loadingRef = useRef(false);
 
   useEffect(() => {
     getVideos();
@@ -18,28 +18,31 @@ const VideoContainer = () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const json = await data.json();
     setVideos(json.items);
-    console.log(json.nextPageToken);
     setNextPageToken(json.nextPageToken);
   };
 
-  // Infinite scrolling
-
   const loadMoreVideos = async () => {
-    if (loading) return;
+    if (!nextPageToken) return;
+    if (loadingRef.current) return;
 
-    setLoading(true);
+    console.log("API Call");
+    console.log(nextPageToken);
 
-    const data = await fetch(
-      YOUTUBE_VIDEOS_API + "&pageToken=" + nextPageToken,
-    );
+    loadingRef.current = true;
 
-    const json = await data.json();
-    //console.log(json);
+    try {
+      const data = await fetch(
+        YOUTUBE_VIDEOS_API + "&pageToken=" + nextPageToken,
+      );
 
-    setVideos((prev) => [...prev, ...json.items]);
-    setNextPageToken(json.nextPageToken);
+      const json = await data.json();
+      //console.log(json);
 
-    setLoading(false);
+      setVideos((prev) => [...prev, ...json.items]);
+      setNextPageToken(json.nextPageToken);
+    } finally {
+      loadingRef.current = false;
+    }
   };
 
   useEffect(() => {
@@ -69,7 +72,7 @@ const VideoContainer = () => {
         ))}
       </div>
       <div>
-        {loading && (
+        {loadingRef.current && (
           <h1 className="text-center font-bold text-2xl">
             Loading more videos...
           </h1>
