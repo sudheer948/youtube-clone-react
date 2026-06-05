@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Demo2 = () => {
   const [y, setY] = useState(0);
@@ -10,8 +10,8 @@ const Demo2 = () => {
   console.log(x);
 
   return (
-    <div className="m-4 p-2 bg-slate-50 border border-black w-96">
-      <div>
+    <div className="m-4 p-3 bg-slate-50 border border-black w-96">
+      <div className="flex items-center">
         <button
           className="bg-green-100 p-2 m-4"
           onClick={() => {
@@ -23,7 +23,7 @@ const Demo2 = () => {
         </button>
         <h1 className="font-bold text-xl">{x}</h1>
       </div>
-      <div>
+      <div className="flex items-center">
         <button
           className="bg-green-100 p-2 m-4"
           onClick={() => {
@@ -34,7 +34,7 @@ const Demo2 = () => {
         </button>
         <h1 className="font-bold text-xl">{y}</h1>
       </div>
-      <div>
+      <div className="flex items-center">
         <button
           className="bg-green-100 p-2 m-4"
           onClick={() => {
@@ -42,7 +42,7 @@ const Demo2 = () => {
             console.log(ref.current);
           }}
         >
-          Ref
+          Increase Ref
         </button>
         <h1 className="font-bold text-xl">Ref = {ref.current}</h1>
       </div>

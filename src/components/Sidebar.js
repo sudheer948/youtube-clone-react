@@ -17,7 +17,9 @@ const Sidebar = () => {
             <li>
               <Link to={"/"}>Home</Link>
             </li>
-            <li>Shorts</li>
+            <li>
+              <Link to={"/demo"}>Demo</Link>
+            </li>
             <li>Videos</li>
             <li>Live</li>
           </ul>
