@@ -17,6 +17,7 @@ const WatchPage = () => {
   const videoId = searchParams.get("v");
 
   if (!videoId) return <Shimmer />;
+  
 
   return (
     <div className="w-full">

@@ -11,7 +11,7 @@ const Sidebar = () => {
   return (
     <>
       {isMenuOpen && (
-        <div className="p-4 text-center shadow-lg h-[48rem] w-[10rem]">
+        <div className="flex-shrink-0 fixed top-30  h-[calc(100vh-4rem)] w-[10rem]  overflow-y-auto bg-white p-4 text-center shadow-lg">
           <h1 className="font-bold">Subscriptions</h1>
           <ul>
             <li>

@@ -63,7 +63,7 @@ const Head = () => {
   };
 
   return (
-    <div className="grid grid-flow-col p-7 shadow-lg items-center">
+    <div className="sticky top-0 bg-white grid grid-flow-col p-7 shadow-lg items-center">
       <div className="flex gap-2 col-span-1">
         <img
           className={`h-8 cursor-pointer transition-transform duration-200`}
