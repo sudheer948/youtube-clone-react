@@ -7,7 +7,7 @@ import Shimmer from "./Shimmer";
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const [nextPageToken, setNextPageToken] = useState(null);
-  const [fetching, setFetching] = useState(false);
+
   // Prevent Multiple API Calls
   const loadingRef = useRef(false);
 
@@ -16,10 +16,10 @@ const VideoContainer = () => {
   }, []);
 
   const getVideos = async () => {
-    setFetching(false);
+
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const json = await data.json();
-    if (json) setFetching(true);
+
 
     setVideos(json.items);
     setNextPageToken(json.nextPageToken);
@@ -35,14 +35,13 @@ const VideoContainer = () => {
     loadingRef.current = true;
 
     try {
-      setFetching(false);
+
       const data = await fetch(
         YOUTUBE_VIDEOS_API + "&pageToken=" + nextPageToken,
       );
 
       const json = await data.json();
-      if (json) setFetching(true);
-      //console.log(json);
+
 
       setVideos((prev) => [...prev, ...json.items]);
       setNextPageToken(json.nextPageToken);
@@ -68,7 +67,7 @@ const VideoContainer = () => {
     }
   };
 
-  return !fetching ? (
+  return !videos ? (
     <Shimmer />
   ) : (
     <div>

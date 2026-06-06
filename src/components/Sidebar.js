@@ -11,8 +11,8 @@ const Sidebar = () => {
   return (
     <>
       {isMenuOpen && (
-        <div className="flex-shrink-0 fixed top-30  h-[calc(100vh-4rem)] w-[10rem]  overflow-y-auto bg-white p-4 text-center shadow-lg">
-          <h1 className="font-bold">Subscriptions</h1>
+        <div className="flex-shrink-0 fixed top-30  h-[calc(100vh-5rem)] w-[15rem]  overflow-y-auto bg-white p-4 text-center shadow-lg">
+          <h1 className="font-bold">🏠 Main Navigation</h1>
           <ul>
             <li>
               <Link to={"/"}>Home</Link>
@@ -23,33 +23,33 @@ const Sidebar = () => {
             <li>Videos</li>
             <li>Live</li>
           </ul>
-          <h1 className="font-bold pt-5">Watch Later</h1>
+          <h1 className="font-bold pt-5">🔥 Explore</h1>
           <ul>
             <li>Music</li>
-            <li>Sports</li>
+            <li>Trending</li>
             <li>Gaming</li>
             <li>Movies</li>
           </ul>
-          <h1 className="font-bold pt-5">Watch Later</h1>
+          <h1 className="font-bold pt-5">📺 Subscriptions</h1>
           <ul>
-            <li>Music</li>
-            <li>Sports</li>
-            <li>Gaming</li>
-            <li>Movies</li>
+            <li>Google Developers</li>
+            <li>MrBeast</li>
+            <li>Traversy Media</li>
+            <li>Tech With Tim</li>
           </ul>
-          <h1 className="font-bold pt-5">Watch Later</h1>
+          <h1 className="font-bold pt-5">⚙️ More from YouTube</h1>
           <ul>
-            <li>Music</li>
-            <li>Sports</li>
-            <li>Gaming</li>
-            <li>Movies</li>
+            <li>Youtube Premium</li>
+            <li>Youtube Studio</li>
+            <li>Youtube Music</li>
+            <li>Youtube Kids</li>
           </ul>
-          <h1 className="font-bold pt-5">Watch Later</h1>
+          <h1 className="font-bold pt-5">🛠 Settings</h1>
           <ul>
-            <li>Music</li>
-            <li>Sports</li>
-            <li>Gaming</li>
-            <li>Movies</li>
+            <li>Settings</li>
+            <li>Report History</li>
+            <li>Help</li>
+            <li>Send Feedback</li>
           </ul>
         </div>
       )}

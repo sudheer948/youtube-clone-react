@@ -2,15 +2,15 @@ import { PROFILE_URL } from "../utils/constants";
 
 const commentsData = [
   {
-    name: "Akshay Saini",
+    name: "Muhammed Sudheer",
     text: "Lorem ipsum",
     replies: [
       {
-        name: "Akshay Saini",
+        name: "Muhammed Sudheer",
         text: "Lorem ipsum",
         replies: [
           {
-            name: "Akshay Saini",
+            name: "Muhammed Sudheer",
             text: "Lorem ipsum",
             replies: [],
           },
@@ -19,12 +19,12 @@ const commentsData = [
     ],
   },
   {
-    name: "Akshay Saini",
+    name: "Muhammed Sudheer",
     text: "Lorem ipsum",
     replies: [],
   },
   {
-    name: "Akshay Saini",
+    name: "Muhammed Sudheer",
     text: "Lorem ipsum",
     replies: [],
   },

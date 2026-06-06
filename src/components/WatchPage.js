@@ -17,15 +17,13 @@ const WatchPage = () => {
   const videoId = searchParams.get("v");
 
   if (!videoId) return <Shimmer />;
-  
 
   return (
     <div className="w-full">
       <div className="flex gap-2 px-5">
-        <div>
+        <div className="flex-[3]">
           <iframe
-            width="1200"
-            height="600"
+            className="w-full aspect-video"
             src={"https://www.youtube.com/embed/" + videoId}
             title="YouTube video player"
             frameBorder="0"
@@ -34,7 +32,7 @@ const WatchPage = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <div className="w-full">
+        <div className="flex-[1]">
           <LiveChat />
         </div>
       </div>
