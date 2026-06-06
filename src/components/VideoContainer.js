@@ -29,7 +29,7 @@ const VideoContainer = () => {
     if (!nextPageToken) return;
     if (loadingRef.current) return;
 
-    console.log("API Call");
+    console.log("Loading API Call");
     console.log(nextPageToken);
 
     loadingRef.current = true;
@@ -57,7 +57,7 @@ const VideoContainer = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  });
+  }, [nextPageToken]);
 
   const handleScroll = () => {
     if (
